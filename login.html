@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
-    <link rel="stylesheet" href="/assets/css/login.css">
+    <link rel="stylesheet" href="./assets/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
 
 </head>
 
 <body>
     <!-- 大事件logo部分 -->
     <div class="layui-main">
-        <img class="logoImg" src="/assets/images/logo.png" alt="">
+        <img class="logoImg" src="./assets/images/logo.png" alt="">
     </div>
 
     <!-- 大事件登录注册部分 -->
@@ -24,7 +24,7 @@
         </div>
         <!-- 登录的盒子 -->
         <div class="loginBox">
-            <form class="layui-form" action="">
+            <form class="layui-form" id="form-login">
                 <div class="layui-form-item">
                     <i class="layui-icon layui-icon-username"></i>
                     <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名"
@@ -45,7 +45,7 @@
         </div>
         <!-- 注册的盒子 -->
         <div class="regBox">
-            <form class="layui-form" action="">
+            <form class="layui-form" id="form-reg">
                 <div class="layui-form-item">
                     <i class="layui-icon layui-icon-username"></i>
                     <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名"
@@ -73,9 +73,12 @@
         </div>
     </div>
     <!-- 导入 layui验证文档 -->
-    <script src="/assets/lib/layui/layui.all.js"></script>
-    <script src="/assets/lib/jquery.js"></script>
-    <script src="/assets/js/login.js"></script>
+    <script src="./assets/lib/layui/layui.all.js"></script>
+    <script src="./assets/lib/jquery.js"></script>
+    <!-- 导如封装的公共部分 -->
+    <script src="./assets/js/ajaxApi.js"></script>
+
+    <script src="./assets/js/login.js"></script>
 </body>
 
 </html>
