@@ -1,7 +1,7 @@
 $(function () {
 
     getUserInfo()
-
+    window.getUserInfo = getUserInfo
     // 给退出点击事件 定义函数
     var layer = layui.layer
     $('#btnLogout').on('click', function () {
@@ -37,7 +37,8 @@ function getUserInfo() {
         //     Authorization: localStorage.getItem('token') || ''
         // },
         success: function (res) {
-            // console.log(res);
+            console.log(res);
+            
             //如果获取失败 直接返回res.message
             if (res.status !== 0) {
                 return layer.msg(res.message)
@@ -47,7 +48,6 @@ function getUserInfo() {
         },
         // complete 无论访问成功还是失败都会调用的方法
         complete: function (res) {
-            console.log(res);
             // 对res 返回的对象进行判断
             if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
                 // 1 强制返回登录页面
@@ -61,7 +61,6 @@ function getUserInfo() {
 
 // 定义渲染头部的函数
 function renderAvatar(user) {
-    console.log(user);
     // 对用户的是否有昵称进行判断 如果有 则用昵称 没有则用username
     var name = user.nickname || user.username
     // 渲染 欢迎用户部分
