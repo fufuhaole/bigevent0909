@@ -37,7 +37,7 @@ function getUserInfo() {
         //     Authorization: localStorage.getItem('token') || ''
         // },
         success: function (res) {
-            console.log(res);
+            // console.log(res);
             
             //如果获取失败 直接返回res.message
             if (res.status !== 0) {
