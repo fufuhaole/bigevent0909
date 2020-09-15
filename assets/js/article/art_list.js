@@ -102,7 +102,7 @@ $(function () {
             count: total, //数据总数，从服务端得到
             limit: q.pagesize, // 每页显示几条数据
             curr: q.pagenum, // 设置默认被选中的分页
-            layout: ['count', 'limit', 'prev', 'next', 'skip'],
+            layout: ['count', 'limit', 'page', 'prev', 'next', 'skip'],
             limits: [2, 5, 10, 15],
             jump: function (obj, first) {
                 // console.log(obj);
@@ -117,7 +117,40 @@ $(function () {
         });
     }
     
-
-
+    /**
+     * 删除列表文章
+     */
+    $('tbody').on('click', '.delete-btn', function () {
+        // console.log($(this).attr('data-id'));
+        //获取自定义属性对应的 id值
+        var BtnId = $(this).attr('data-id')
+        var len = $('.delete-btn').length
+        console.log(len);
+        
+        // 点击后弹出layui弹出层
+        layer.confirm('确认删除?', {icon: 3, title:'提示'}, function(index){
+            //对接服务器后台删除接口
+            $.ajax({
+                url: '/my/article/delete/' + BtnId,
+                method: 'GET',
+                success: function (res) {
+                    if (res.status !== 0) {
+                        return layer.msg(res.message)
+                    }
+                    layer.msg('删除文章成功')
+                // 当数据删除完成后，需要判断当前这一页中，是否还有剩余的数据
+                // 如果没有剩余的数据了,则让页码值 -1 之后,
+                // 再重新调用 initTable 方法
+                    if (len === 1) {
+                        q.pagenum = q.pagenum === 1? 1 : q.pagenum - 1
+                    }
+                    iniTatble()
+                    layer.close(index);
+                }
+            })
+          });
+        
+        
+    })
 
 })
