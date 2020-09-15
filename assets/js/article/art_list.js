@@ -15,6 +15,8 @@ $(function () {
      * 获取文章列表
      */
     iniTatble()
+    initCate()
+
     function iniTatble() {
         $.ajax({
             url: '/my/article/list',
@@ -60,7 +62,6 @@ $(function () {
      * 渲染下拉列表中的所有分类
      */
 
-    initCate()
     function initCate() {
         $.ajax({
             url: '/my/article/cates',
@@ -70,7 +71,7 @@ $(function () {
                     return layer.msg(res.message)
                 }
                 var cateHtml = template('tpl-cate', res)
-                $('.layui-form [name=cate-id]').html(cateHtml)
+                $('.layui-form [name=cate_id]').html(cateHtml)
                 // 通过 layui 重新渲染表单区域的UI结构
                 form.render()
             }
@@ -86,6 +87,9 @@ $(function () {
         var cate_id = $('[name=cate_id]').val()
         var state = $('[name=state]').val()
         // 为查询参数对象 q 中对应的属性赋值
+        // console.log(cate_id);
+        // console.log(state);
+        
         q.cate_id = cate_id
         q.state = state
         // 根据最新的筛选条件，重新渲染表格的数据

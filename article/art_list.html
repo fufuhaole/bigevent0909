@@ -17,7 +17,7 @@
             <!-- 筛选区域 -->
             <form class="layui-form" id="form-search">
                 <div class="layui-form-item layui-inline">
-                    <select name="cate-id">
+                    <select name="cate_id">
                     </select>
                 </div>
                 <div class="layui-form-item layui-inline">
@@ -75,9 +75,9 @@
 
     <!-- 创建筛选去模块 -->
     <script type="text/html" id="tpl-cate">
-        <option value="">请选择一个城市</option>
+        <option value="">所有类别</option>
         {{each data}}
-        <option value="name">{{$value.name}}</option>
+        <option value="{{$value.Id}}">{{$value.name}}</option>
 
         {{/each}}
     </script>
