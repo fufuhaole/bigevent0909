@@ -57,6 +57,8 @@ $(function () {
                 avatar: dataURL
             },
             success: function (res) {
+                console.log(res);
+                
                 if (res.status != 0) {
                     return layer.msg('上传失败')
                 }
